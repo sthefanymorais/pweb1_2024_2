@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        <style>
+            #conteudo {
+                transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+                position: relative; /* Para que o gatinho fique posicionado corretamente */
+                overflow: hidden; /* Para esconder a parte do gatinho fora do parágrafo */
+            }
+            #gatinho {
+                display: none; /* Oculta a imagem do gatinho inicialmente */
+                position: absolute;
+                bottom: 0; /* Ajusta a posição do gatinho em relação ao parágrafo */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px; /* Largura da imagem do gatinho */
+            }
+            /* Animação de pulos do gatinho */
+            @keyframes pular {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-50px); } /* Ajuste a altura do pulo conforme necessário */
+            100% { transform: translateY(0); }
+        }
+        </style>
+        <script>
+        function mostrar(){
+            alert("teste");
+            var conteudo = document.getElementById('conteudo');
+            var gatinho = document.getElementById('gatinho');
+            conteudo.innerHTML = "Texto Diferente"; //recebe novo texto
+            conteudo.style.color = "gray"; //muda a cor do texto
+            conteudo.style.backgroundColor = "purple"; //muda cor do fundo
+            conteudo.addEventListener('mouseover', function() {
+                conteudo.style.backgroundColor = 'orange'; // Cor de fundo quando o mouse passa
+                gatinho.style.display = 'block'; // Mostra o gatinho
+                gatinho.style.animation = 'pular 1s'; // Aplica a animação de pular
+            });
+            conteudo.addEventListener('mouseout', function() {
+                conteudo.style.backgroundColor = 'purple'; // Cor de fundo quando o mouse sai
+                gatinho.style.display = 'none'; // Esconde o gatinho
+                gatinho.style.animation = ''; // Remove a animação
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Exemplo JavaScript</h1>
+    <p id="conteudo">Texto qualquer</p>
+
+    <button onclick = "mostrar()"> Clique aqui</button>
+    <img id="gatinho" src="https://static.vecteezy.com/ti/vetor-gratis/t2/1895553-icone-mascote-gatinho-kawaii-cinzento-gratis-vetor.jpg" alt="Gatinho pulando" />
+</body>
+</html>
